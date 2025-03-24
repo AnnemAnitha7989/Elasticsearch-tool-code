@@ -7,14 +7,14 @@ pipeline {
         choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Select action: apply or destroy')
     }
     stages {
-        stage('Checkout Repository') {
+       stage('Checkout Repositories') {
             steps {
                 script {
-                    // Ensure the correct repository and branch are used
-                    git branch: 'main', url: 'https://github.com/AnnemAnitha7989/EStool_Teraform.git'
-                }
-            }
-        }
+                        git branch: 'main', credentialsId: 'git_credentials', url: 'https://github.com/AnnemAnitha7989/TERRAFORM-.git'
+                        git branch: 'main', credentialsId: 'git_credentials', url: 'https://github.com/AnnemAnitha7989/Ansible-role.git
+                        }
+                   }
+         }
 
         stage('Terraform Init') {
             steps {
